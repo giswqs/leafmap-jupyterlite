@@ -65,6 +65,8 @@ for file in files:
             out_lines.append(line)
         elif ':id:' in line:
             pass
+        elif line.strip() == '# leafmap.update_package()':
+            pass
         elif line.strip() == '# !pip install geopandas':
             out_lines.append('import piplite\n')
             out_lines.append(
@@ -76,6 +78,7 @@ for file in files:
     with open(file, 'w') as f:
         f.writelines(out_lines)
 
+
 os.chdir(notebook_dir)
 cmd = "jupytext --to ipynb *.md"
 os.system(cmd)
@@ -86,6 +89,8 @@ os.system(cmd)
 
 os.chdir(cwd)
 
+for file in files:
+    os.remove(file)
 
 # extra = {
 # "cell_type": "code",
