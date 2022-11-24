@@ -10,10 +10,22 @@ JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
 
 ## Usage
 
-Install leafmap for JupyterLite:
+Install leafmap for JupyterLite using:
+
+```bash
+%pip install -q leafmap
+```
+
+Alternatively, you can install leafmap using piplite:
 
 ```python
 import piplite
-await piplite.install('leafmap-lite')
-await piplite.install(['leafmap', 'geopandas', 'shapely', 'pyproj'], deps=False)
+await piplite.install('leafmap')
+```
+
+To install GeoPandas, you can use:
+
+```python
+import piplite
+await piplite.install(['geopandas', 'shapely', 'pyproj'], deps=False)
 ```
