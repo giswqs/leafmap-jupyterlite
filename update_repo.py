@@ -74,6 +74,8 @@ for file in files:
             )
         elif "display_name" in line:
             out_lines.append("  display_name: Python (Pyodide)\n")
+        elif 'name: python3' in line:
+            out_lines.append('  name: python\n')
         else:
             out_lines.append(line)
 
