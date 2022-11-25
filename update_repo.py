@@ -72,6 +72,8 @@ for file in files:
             out_lines.append(
                 "await piplite.install(['geopandas', 'shapely', 'pyproj'], deps=False)\n"
             )
+        elif "display_name" in line:
+            out_lines.append("  display_name: Python (Pyodide)\n")
         else:
             out_lines.append(line)
 

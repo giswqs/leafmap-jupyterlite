@@ -8,6 +8,10 @@ JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
 
 ➡️ **https://demo.leafmap.org**
 
+## Repository
+
+➡️ **https://github.com/giswqs/leafmap-jupyterlite**
+
 ## Usage
 
 Install leafmap for JupyterLite using:
@@ -29,3 +33,13 @@ To install GeoPandas, you can use:
 import piplite
 await piplite.install(['geopandas', 'shapely', 'pyproj'], deps=False)
 ```
+
+## How to get an updated version of JupyterLite
+
+To clear local storage and sync with the latest version of JupyterLite site on GitHub, you can use:
+
+Chrome Settings -> More tools -> Developer tools -> Application -> Storage -> IndexedDB -> JupyterLite Storage -> Right click files -> Clear
+
+Then press F5 to refresh the page.
+
+![](https://i.imgur.com/rL4rc6A.png)

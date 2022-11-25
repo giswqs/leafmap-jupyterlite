@@ -114,3 +114,4 @@ dmypy.json
 # jupyterlite
 *.doit.db
 _output
+.vscode/launch.json
