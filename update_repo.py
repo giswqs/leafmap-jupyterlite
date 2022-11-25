@@ -21,14 +21,8 @@ os.chdir(notebook_dir)
 cmd = "jupytext --to myst *.ipynb"
 os.system(cmd)
 
-cmd = "jupytext --to ipynb --update *.md"
-os.system(cmd)
-
 os.chdir(workshop_dir)
 cmd = "jupytext --to myst *.ipynb"
-os.system(cmd)
-
-cmd = "jupytext --to ipynb *.md"
 os.system(cmd)
 
 os.chdir(cwd)
@@ -44,7 +38,7 @@ for file in files:
         lines = f.readlines()
 
     out_lines = []
-    for line in lines:
+    for index, line in enumerate(lines):
         if line.strip() == '# !pip install leafmap':
             out_lines.append('%pip install -q leafmap\n')
         elif (
@@ -52,7 +46,7 @@ for file in files:
             == 'Uncomment the following line to install [leafmap](https://leafmap.org) if needed.'
         ):
             pass
-        elif 'colab-badge.svg' in line:
+        elif 'colab-badge.svg' in line and 'jupyterlite' not in lines[index-1]:
             badge = (
                 '[![image](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)]'
             )
@@ -95,6 +89,23 @@ os.chdir(cwd)
 
 for file in files:
     os.remove(file)
+
+files = [file.replace('.md', '.ipynb') for file in files]
+
+for file in files:
+    with open(file, 'r') as f:
+        lines = f.readlines()
+
+    out_lines = []
+    for index, line in enumerate(lines):
+        if '"id":' in line:
+            pass
+        else:
+            out_lines.append(line)
+
+    with open(file, 'w') as f:
+        f.writelines(out_lines)
+
 
 # extra = {
 # "cell_type": "code",
