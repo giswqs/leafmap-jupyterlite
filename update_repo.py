@@ -39,7 +39,7 @@ for file in files:
 
     out_lines = []
     for index, line in enumerate(lines):
-        if line.strip() == '# !pip install leafmap':
+        if line.strip() == '# !pip install leafmap' or line.strip() == '# !pip install -U leafmap':
             out_lines.append('%pip install -q leafmap\n')
         elif (
             line.strip()
