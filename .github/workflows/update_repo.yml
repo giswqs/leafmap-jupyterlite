@@ -1,4 +1,4 @@
-name: update_catalogs
+name: update_repo
 on:
   workflow_dispatch:
   schedule:
