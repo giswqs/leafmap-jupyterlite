@@ -32,11 +32,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "Updated datasets ${today} UTC" -a
-          git pull origin master
+          git commit -m "Updated notebooks ${today} UTC" -a
+          git pull origin main
       - name: push changes
         continue-on-error: true
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          branch: main
