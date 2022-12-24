@@ -5,8 +5,13 @@
 import glob
 import os
 import shutil
+import leafmap
 
-in_dir = '../leafmap/docs'
+url = 'https://github.com/giswqs/leafmap/archive/refs/heads/master.zip'
+out_zip = 'leafmap-master.zip'
+leafmap.download_file(url, out_zip)
+
+in_dir = 'leafmap-master/docs'
 out_dir = 'content'
 notebook_dir = os.path.abspath(os.path.join(out_dir, 'notebooks'))
 workshop_dir = os.path.abspath(os.path.join(out_dir, 'workshops'))
@@ -106,6 +111,8 @@ for file in files:
     with open(file, 'w') as f:
         f.writelines(out_lines)
 
+shutil.rmtree('leafmap-master')
+os.remove('leafmap-master.zip')
 
 # extra = {
 # "cell_type": "code",
